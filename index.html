@@ -44,8 +44,8 @@
             GetProductData();
         });
         function GetProductData() {
-            if (localStorage.getItem("html")) {
-                var htmlstr = localStorage.getItem("html");
+            var htmlstr=localStorage.getItem("html");
+            if (htmlstr) {
                 $("#divProduct").html(htmlstr);
             } else {
                 $.ajax({
