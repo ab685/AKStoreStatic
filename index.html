@@ -59,24 +59,6 @@
                         }
                         return true;
                     },
-                    //success: function (response) {
-                    //    if (response.Success) {
-                    //        var html = '';
-                    //        response.data.forEach(function (item) {
-                    //            var fileName = 'http://sweetncool.co.uk//Documents/images/product/' + item.FilePath;
-                    //            html += `<div class="col-6 col-lg-3 col-md-4  mt-2">
-                    //        <div class="card h-100">
-                    //        <img class="card-img-top" style="max-height:200px !important;" src="${fileName}" alt="Card image cap">
-                    //        <div class="card-body" style="background:rgba(0,0,0,.03)">  <h6 class="card-title">${item.Name}</h6>
-                    //         </div>
-                    //    </div>
-                    //    </div>`;
-                    //        });
-                    //        $("#divProduct").html(html);
-                    //    } else {
-                    //        alert(response.Error);
-                    //    }
-                    //},
                     complete: function (jqXHR, textStatus) {
                         localCache.set("http://sweetncool.co.uk/common/GetProducts", jqXHR, BindProduct);
                     },
@@ -89,21 +71,31 @@
        
         
         function BindProduct(response) {
+           var grouppedData= groupBy(JSON.parse(response.responseText).data,'CategoryName');
             var html = '';
-            JSON.parse(response.responseText).data.forEach(function (item) {
-                var fileName = 'http://sweetncool.co.uk//Documents/images/product/' + item.FilePath;
-                html += `<div class="col-6 col-lg-3 col-md-4  mt-2">
+            for (var category in grouppedData) {
+                html += `<div class="col-12 bg-success text-white text-uppercase font-weight-bold text-center  mt-4 p-2" style="margin-left:1rem;max-width:97.25%;width:auto">${category}</div>`;
+                grouppedData[category].forEach(function (item) {
+                    var fileName = 'http://sweetncool.co.uk//Documents/images/product/' + item.FilePath;
+                    html += `<div class="col-6 col-lg-3 col-md-4  mt-2">
                     <div class="card h-100">
                     <img class="card-img-top" style="max-height:200px !important;" src="${fileName}" alt="Card image cap">
                     <div class="card-body" style="background:rgba(0,0,0,.03)">  <h6 class="card-title">${item.Name}</h6>
                      </div>
                 </div>
                 </div>`;
-            });
-            localStorage.setItem("html", html);
+                });
+            }
+            //localStorage.setItem("html", html);
             $("#divProduct").html(html);
         }
-       
+        var groupBy = function (xs, key) {
+            return xs.reduce(function (rv, x) {
+                (rv[x[key]] = rv[x[key]] || []).push(x);
+                return rv;
+            }, {});
+        };
+
     </script>
 </body>
 
