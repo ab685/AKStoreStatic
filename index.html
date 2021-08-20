@@ -14,94 +14,7 @@
 <body>
     <div class="container mt-50 mb-50">
         <div class="row" id="divProduct">
-            <!--<div class="col-6 col-lg-3 col-md-4  mt-2">
-        <div class="card">
-            <div class="card-body">
-                <div class="card-img-actions"> <img src="http://sweetncool.co.uk//Documents/images/product/Sprite%20Can.jpg" class="card-img img-fluid" width="96" height="350" alt=""> </div>
-            </div>
-            <div class="card-body bg-light text-center">
-                <div class="mb-2">
-                    <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">Ice cream cone</a> </h6> <a href="#" class="text-muted" data-abc="true"></a>
-                </div>
-                <h3 class="mb-0 font-weight-semibold">$120</h3>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-6 col-lg-3 mt-2">
-        <div class="card">
-            <div class="card-body">
-                <div class="card-img-actions"> <img src="http://sweetncool.co.uk//Documents/images/product/Sprite%20Can.jpg" class="card-img img-fluid" width="96" height="350" alt=""> </div>
-            </div>
-            <div class="card-body bg-light text-center">
-                <div class="mb-2">
-                    <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">Ice cream cone</a> </h6> <a href="#" class="text-muted" data-abc="true"></a>
-                </div>
-                <h3 class="mb-0 font-weight-semibold">$120</h3>
-
-
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-6 col-lg-3 mt-2">
-        <div class="card">
-            <div class="card-body">
-                <div class="card-img-actions"> <img src="http://sweetncool.co.uk//Documents/images/product/Sprite%20Can.jpg" class="card-img img-fluid" width="96" height="350" alt=""> </div>
-            </div>
-            <div class="card-body bg-light text-center">
-                <div class="mb-2">
-                    <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">Ice cream cone</a> </h6> <a href="#" class="text-muted" data-abc="true"></a>
-                </div>
-                <h3 class="mb-0 font-weight-semibold">$120</h3>
-
-
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-6 col-lg-3 mt-2">
-        <div class="card">
-            <div class="card-body">
-                <div class="card-img-actions"> <img src="http://sweetncool.co.uk//Documents/images/product/Sprite%20Can.jpg" class="card-img img-fluid" width="96" height="350" alt=""> </div>
-            </div>
-            <div class="card-body bg-light text-center">
-                <div class="mb-2">
-                    <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">Ice cream cone</a> </h6> <a href="#" class="text-muted" data-abc="true"></a>
-                </div>
-                <h3 class="mb-0 font-weight-semibold">$120</h3>
-
-
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-6 col-lg-3 mt-2">
-        <div class="card">
-            <div class="card-body">
-                <div class="card-img-actions"> <img src="http://sweetncool.co.uk//Documents/images/product/Sprite%20Can.jpg" class="card-img img-fluid" width="96" height="350" alt=""> </div>
-            </div>
-            <div class="card-body bg-light text-center">
-                <div class="mb-2">
-                    <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">Ice cream cone</a> </h6> <a href="#" class="text-muted" data-abc="true"></a>
-                </div>
-                <h3 class="mb-0 font-weight-semibold">$120</h3>
-
-
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-6 col-lg-3 mt-2">
-        <div class="card">
-            <div class="card-body">
-                <div class="card-img-actions"> <img src="http://sweetncool.co.uk//Documents/images/product/Sprite%20Can.jpg" class="card-img img-fluid" width="96" height="350" alt=""> </div>
-            </div>
-            <div class="card-body bg-light text-center">
-                <div class="mb-2">
-                    <h6 class="font-weight-semibold mb-2"> <a href="#" class="text-default mb-2" data-abc="true">Ice cream cone</a> </h6> <a href="#" class="text-muted" data-abc="true"></a>
-                </div>
-                <h3 class="mb-0 font-weight-semibold">$120</h3>
-
-
-            </div>
-        </div>
-    </div>-->
+            
             
         </div>
     </div>
@@ -109,32 +22,75 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script>
-
+        var localCache = {
+            data: {},
+            remove: function (url) {
+                delete localCache.data[url];
+            },
+            exist: function (url) {
+                return localCache.data.hasOwnProperty(url) && localCache.data[url] !== null;
+            },
+            get: function (url) {
+                console.log('Getting in cache for url' + url);
+                return localCache.data[url];
+            },
+            set: function (url, cachedData, callback) {
+                localCache.remove(url);
+                localCache.data[url] = cachedData;
+                if ($.isFunction(callback)) callback(cachedData);
+            }
+        };
         $.ajax({
             type: "GET",
             url: 'http://sweetncool.co.uk/common/GetProducts',
-            success: function (response) {
-                if (response.Success) {
-                    var html = '';
-                    response.data.forEach(function (item) {
-                        var fileName = 'http://sweetncool.co.uk//Documents/images/product/' + item.FilePath;
-                        html += `<div class="col-6 col-lg-3 col-md-4  mt-2">
+            cache: true,
+            beforeSend: function () {
+                if (localCache.exist("http://sweetncool.co.uk/common/GetProducts")) {
+                    BindProduct(localCache.get("http://sweetncool.co.uk/common/GetProducts"));
+                    return false;
+                }
+                return true;
+            },
+            //success: function (response) {
+            //    if (response.Success) {
+            //        var html = '';
+            //        response.data.forEach(function (item) {
+            //            var fileName = 'http://sweetncool.co.uk//Documents/images/product/' + item.FilePath;
+            //            html += `<div class="col-6 col-lg-3 col-md-4  mt-2">
+            //        <div class="card h-100">
+            //        <img class="card-img-top" style="max-height:200px !important;" src="${fileName}" alt="Card image cap">
+            //        <div class="card-body" style="background:rgba(0,0,0,.03)">  <h6 class="card-title">${item.Name}</h6>
+            //         </div>
+            //    </div>
+            //    </div>`;
+            //        });
+            //        $("#divProduct").html(html);
+            //    } else {
+            //        alert(response.Error);
+            //    }
+            //},
+            complete: function (jqXHR, textStatus) {
+                localCache.set("http://sweetncool.co.uk/common/GetProducts", jqXHR, BindProduct);
+            },
+            error: function (error) {
+                alert(error.Error);
+            }
+        });
+        function BindProduct(response) {
+          
+            var html = '';
+            JSON.parse(response.responseText).data.forEach(function (item) {
+                var fileName = 'http://sweetncool.co.uk//Documents/images/product/' + item.FilePath;
+                html += `<div class="col-6 col-lg-3 col-md-4  mt-2">
                     <div class="card h-100">
                     <img class="card-img-top" style="max-height:200px !important;" src="${fileName}" alt="Card image cap">
                     <div class="card-body" style="background:rgba(0,0,0,.03)">  <h6 class="card-title">${item.Name}</h6>
                      </div>
                 </div>
                 </div>`;
-                    });
-                    $("#divProduct").html(html);
-                } else {
-                    alert(response.Error);
-                }
-            },
-            error: function (error) {
-                alert(error.Error);
-            }
-        });
+            });
+            $("#divProduct").html(html);
+        }
     </script>
 </body>
 
