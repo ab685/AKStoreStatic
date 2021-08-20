@@ -74,7 +74,7 @@
            var grouppedData= groupBy(JSON.parse(response.responseText).data,'CategoryName');
             var html = '';
             for (var category in grouppedData) {
-                html += `<div class="col-12 bg-success text-white text-uppercase font-weight-bold text-center  mt-4 p-2" style="margin-left:1rem;max-width:97.25%;width:auto">${category}</div>`;
+                html += `<div class="col-12 bg-success text-white text-uppercase font-weight-bold text-center  mt-4 p-2" style="margin-left:1rem;max-width:91%;width:auto">${category}</div>`;
                 grouppedData[category].forEach(function (item) {
                     var fileName = 'http://sweetncool.co.uk//Documents/images/product/' + item.FilePath;
                     html += `<div class="col-6 col-lg-3 col-md-4  mt-2">
