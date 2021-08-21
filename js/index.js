@@ -90,7 +90,7 @@ function BindProduct(response) {
                                 </div>`;
         });
     }
-    //localStorage.setItem("html", html);
+    localStorage.setItem("html", html);
     $("#divProduct").html(html);
 }
 var groupBy = function (xs, key) {
