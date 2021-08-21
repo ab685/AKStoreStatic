@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
 });
 function GetProductData() {
-    var htmlstr = localStorage.getItem("html");
+    var htmlstr = sessionStorage.getItem("html");
     if (htmlstr) {
         $("#divProduct").html(htmlstr);
     } else {
@@ -90,7 +90,7 @@ function BindProduct(response) {
                                 </div>`;
         });
     }
-    localStorage.setItem("html", html);
+    sessionStorage.setItem("html", html);
     $("#divProduct").html(html);
 }
 var groupBy = function (xs, key) {
