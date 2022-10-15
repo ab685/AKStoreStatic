@@ -56,17 +56,17 @@ function GetProductData() {
     } else {
         $.ajax({
             type: "GET",
-            url: 'http://sweetncool.co.uk/common/GetProducts',
+            url: 'http://abhi.wfire.in/common/GetProducts',
             cache: true,
             beforeSend: function () {
-                if (localCache.exist("http://sweetncool.co.uk/common/GetProducts")) {
-                    BindProduct(localCache.get("http://sweetncool.co.uk/common/GetProducts"));
+                if (localCache.exist("http://abhi.wfire.in/common/GetProducts")) {
+                    BindProduct(localCache.get("http://abhi.wfire.in/common/GetProducts"));
                     return false;
                 }
                 return true;
             },
             complete: function (jqXHR, textStatus) {
-                localCache.set("http://sweetncool.co.uk/common/GetProducts", jqXHR, BindProduct);
+                localCache.set("http://abhi.wfire.in/common/GetProducts", jqXHR, BindProduct);
             },
             error: function (error) {
                 alert(error.Error);
@@ -80,7 +80,7 @@ function BindProduct(response) {
     for (var category in grouppedData) {
         html += `<div class="shadow col-12  text-white text-uppercase font-weight-bold text-center  mt-4 p-2 categoryDiv" style="margin-left:1rem;"><h6>${category}</h6></div>`;
         grouppedData[category].forEach(function (item) {
-            var fileName = 'http://sweetncool.co.uk//Documents/images/product/' + item.FilePath;
+            var fileName = 'http://abhi.wfire.in//Documents/images/product/' + item.FilePath;
             html += `<div class="col-6 col-lg-3 col-md-4  mt-2">
                                     <div class="card h-100 shadow cardhover">
                                     <img class="card-img-top" style="max-height:200px !important;" src="${fileName}" alt="Card image cap">
